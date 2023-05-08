@@ -117,7 +117,7 @@
         object-fit: contain;
         margin-right: 20px;
 
-        transition: all linear 2s;
+        transition: all linear 0.05s;
         filter: saturate(0);
       }
 
@@ -125,8 +125,7 @@
         cursor: pointer;
         img {
           filter: saturate(1);
-          transition: all linear 0.05s;
-          transform: perspective(80px) rotateY(1080deg) scale(1.5) rotateX(10deg);
+          transform: perspective(80px) rotateY(15deg) scale(1.25) rotateX(10deg);
         }
       }
     }
