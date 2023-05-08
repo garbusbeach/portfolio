@@ -1,5 +1,6 @@
 {
-  "name": "nuxt-app",
+  "name": "portfolio",
+  "author": "Piotr Garbicz<piotr.garbus.garbicz@gmail.com>",
   "private": true,
   "scripts": {
     "build": "nuxt build",
@@ -10,6 +11,13 @@
   },
   "devDependencies": {
     "@types/node": "^18",
+    "eslint": "^8.40.0",
+    "eslint-plugin-vue": "^9.11.1",
     "nuxt": "^3.4.3"
+  },
+  "packageManager": "yarn@3.5.1",
+  "dependencies": {
+    "nuxt-security": "^0.13.0",
+    "sass": "^1.62.1"
   }
 }
