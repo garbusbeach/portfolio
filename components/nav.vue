@@ -1,12 +1,5 @@
 <template>
   <div class="nav">
-    <div class="grid-lines">
-      <div class="line" />
-      <div class="line" />
-      <div class="line" />
-      <div class="line" />
-      <div class="line" />
-    </div>
     <div class="navbar">
       <h1 class="brand">Piotr Garbicz</h1>
       <div class="links">
@@ -29,57 +22,37 @@
   top: 0;
   left: 0;
   z-index: 1000;
-  height: 161px;
 
   background-color: var(--bg-color);
 
-  .grid-lines {
-    background-color: var(--bg-color);
-    width: calc(100% - 48px * 4);
-    height: 161px;
-    position: fixed;
-    top: 0;
-    left: calc((100% - 1080px)/2);
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-
-    max-width: 1080px;
-
-    @media screen and (max-width: 720px) {
-      display: none;
-    }
-
-    @media screen and (max-width: 1272px) {
-        left: 96px;
-      }
-
-    .line {
-      width: 0;
-      height: 161px;
-      border-left: solid 1px #555;
-      opacity: 0.2;
-    }
-  }
-
-
   .navbar {
-    width: calc(100% - 48px * 4);
+    width: 100%;
     max-width: var(--max-width);
     margin: 0 auto;
     padding: 24px 0;
     display: flex;
     justify-content: space-between;
-    position: fixed;
-    left: calc((100% - 1080px)/2);
+
+    // background-size: 25%;
+    // background-image:
+    //   linear-gradient(to right, #555 1px, transparent 1px);
+    // border-right: solid 1px #555;
+
+    --offset: 0px;
 
     @media screen and (max-width: 1272px) {
-        left: 96px;
-      }
+      --offset: 96px;
+      width: calc(100% - var(--offset) * 2);
+      margin: 0 var(--offset);
+    }
 
     @media screen and (max-width: 720px) {
-      padding: 24px 4px;
+      --offset: 32px;
     }
+
+    // @media screen and (max-width: 720px) {
+    //   padding:  4px;
+    // }
 
     .brand {
       width: 25%;

@@ -46,16 +46,23 @@
     .title, .dummy { display: inline; }
 
     .title {
-      width: 50%;
-      text-align: center;
+      width: calc(538px);
+      // text-align: center;
       font-size: 48px;
       color: var(--primary);
-      // background: var(--bg-color);
+      // To not overlay first line
+      margin-left: 1px;
+      background: var(--bg-color);
       font-weight: 500;
       letter-spacing: var(--condensed);
       display: inline-block;
 
+      @media screen and (max-width: 1272px) {
+        width: calc(50vw - 100px);
+      }
+
       @media screen and (max-width: 720px) {
+        width: calc(50vw - 36px);
         font-size: 32px;
       }
 

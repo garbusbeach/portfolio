@@ -78,6 +78,7 @@
           width: 50%;
           font-size: 16px;
           color: var(--light);
+          background: var(--bg-color);
           border: solid 1px var(--light);
           padding: 16px;
         }

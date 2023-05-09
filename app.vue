@@ -15,11 +15,33 @@
 
 <style lang="scss">
   .wrapper {
-    @media screen and (max-width: 1144px) {
-      // margin: 32px;
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+
+    --offset: 0px;
+
+    @media screen and (max-width: 1272px) {
+      --offset: 96px;
+      width: calc(100% - var(--offset) * 2);
+      margin: 0 var(--offset);
     }
 
-    position: relative;
-    z-index: 10;
+    @media screen and (max-width: 720px) {
+      --offset: 32px;
+    }
+
+    background-size: 25%;
+    background-image:
+      linear-gradient(to right, #333 1px, transparent 1px);
+    border-right: solid 1px #333;
+
+
+    // background-image: linear-gradient(to right, black 33%, rgba(255,255,255,0) 0%);
+    // background-position: bottom;
+    // background-size: 3px 1px;
+    // background-repeat: repeat-x;
+    // border-left: solid 1px #555;
+
   }
 </style>
