@@ -24,12 +24,14 @@
   z-index: 1000;
 
   background-color: var(--bg-color);
+  // background: linear-gradient(180deg, var(--bg-color) 85%, transparent);
 
   .navbar {
     width: 100%;
     max-width: var(--max-width);
     margin: 0 auto;
-    padding: 24px 0;
+    padding-top: 24px;
+    padding-bottom: 48px;
     display: flex;
     justify-content: space-between;
 

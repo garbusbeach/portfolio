@@ -22,11 +22,13 @@
 
 <style lang="scss">
   .about-me {
+    // border-image: linear-gradient(to right, red 1px, transparent 1px);
+    // border-image-width: 100%;
+
     .content {
       width: 100%;
       display: flex;
       justify-content: space-between;
-
 
       @media screen and (max-width: 720px) {
         flex-direction: column-reverse;

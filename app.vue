@@ -33,7 +33,9 @@
 
     background-size: 25%;
     background-image:
-      linear-gradient(to right, #333 1px, transparent 1px);
+      linear-gradient(to bottom, red, transparent 5%),
+      linear-gradient(to right, #222 1px, transparent 1px),
+      linear-gradient(to left, #222 1px, transparent 1px),
 
     // background-image: linear-gradient(to right, black 33%, rgba(255,255,255,0) 0%);
     // background-position: bottom;
