@@ -26,7 +26,7 @@
 
 <style lang="scss">
   .contact {
-    margin-top: 128px;
+    padding-top: 224px;
     .content {
       display: flex;
       flex-direction: row;

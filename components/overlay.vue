@@ -46,9 +46,10 @@
       }
 
       .stick {
-        border: 1px solid var(--light);
         height: 120px;
-        width: 0;
+        width: 2px;
+        border-radius: 2px;
+        background-color: var(--light);
       }
 
       .icon {

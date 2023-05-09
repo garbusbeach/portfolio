@@ -46,13 +46,13 @@
     .title, .dummy { display: inline; }
 
     .title {
-      width: calc(538px);
+      width: 538px;
       // text-align: center;
       font-size: 48px;
       color: var(--primary);
       // To not overlay first line
       margin-left: 1px;
-      background: var(--bg-color);
+      background: radial-gradient(closest-side, var(--bg-color) 75%, transparent);
       font-weight: 500;
       letter-spacing: var(--condensed);
       display: inline-block;
@@ -78,6 +78,7 @@
         position: fixed;
         top: 64px;
         z-index: 10000;
+        background: var(--bg-color);
       }
 
       &:before {

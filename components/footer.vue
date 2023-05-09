@@ -12,8 +12,10 @@
 
 <style lang="scss">
   .footer {
-    margin-top: 128px;
+    background-image: linear-gradient(345deg, var(--bg-color)0 60%, transparent 70%);
+    padding-top: 224px;
     padding-bottom: 0;
+    border-right: none;
     .content {
       text-align: center;
 

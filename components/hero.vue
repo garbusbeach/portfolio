@@ -22,6 +22,8 @@
     display: flex;
     align-items: center;
 
+    background-image: linear-gradient(190deg, var(--bg-color)0 70%, transparent 80%);
+
     @media screen and (max-width: 720px) {
       margin-top: 60px;
 
