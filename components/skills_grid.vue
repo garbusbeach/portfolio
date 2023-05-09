@@ -101,6 +101,7 @@
       width: 25%;
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       padding: 8px 16px;
       font-size: 18px;
 
@@ -112,20 +113,22 @@
       }
 
       img {
-        width: 48px;
-        height: 48px;
+        width: 28px;
+        height: 28px;
         object-fit: contain;
-        margin-right: 20px;
+        margin-right: 12px;
 
         transition: all linear 0.05s;
-        filter: saturate(0);
+        // filter: saturate(0);
+        filter: sepia(1) hue-rotate(120deg);
       }
 
       &:hover {
         cursor: pointer;
         img {
           filter: saturate(1);
-          transform: perspective(80px) rotateY(15deg) scale(1.25) rotateX(10deg);
+          transform: scale(1.25);
+          // transform: perspective(80px) rotateY(15deg) scale(1.25) rotateX(10deg);
         }
       }
     }

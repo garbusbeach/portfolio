@@ -35,7 +35,7 @@
       .description {
         width: 66%;
         font-size: 18px;
-        color: var(--light);
+        color: var(--light-2);
         letter-spacing: var(--condensed);
 
         @media screen and (max-width: 720px) {

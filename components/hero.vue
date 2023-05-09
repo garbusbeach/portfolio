@@ -15,7 +15,7 @@
 
 <style lang="scss">
   .hero {
-    width: 100%;
+    width: calc(100% - 48px * 4);
     height: 100vh;
     max-width: var(--max-width);
     margin: 0 auto;
