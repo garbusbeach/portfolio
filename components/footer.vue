@@ -16,11 +16,22 @@
     padding-top: 224px;
     padding-bottom: 0;
     border-right: none;
+
+    @media screen and (max-width: 720px) {
+      padding-top: 64px;
+    }
+
     .content {
       text-align: center;
 
       a { color: var(--primary); }
-      p { margin-bottom: 64px; }
+      p {
+        margin-bottom: 64px;
+
+        @media screen and (max-width: 720px) {
+          margin-bottom: 32px;
+        }
+      }
     }
   }
 </style>

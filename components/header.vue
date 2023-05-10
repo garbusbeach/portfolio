@@ -1,15 +1,8 @@
 <template>
   <div class="header">
-    <h2
-      class="title"
-      :class="{'locked': locked}"
-    >
+    <h2 class="title" ref="header">
       {{ props.title }}
     </h2>
-    <h2
-      class="dummy"
-      ref="header"
-    >&nbsp;</h2>
   </div>
 </template>
 
@@ -19,20 +12,26 @@
     anchor: string;
   }>();
 
-  const locked = ref(false);
-  const header = ref() as Ref<HTMLHeadingElement>;
+  const header = ref() as Ref<HTMLElement>;
+  const currentHeader = useState('currentHeader', () => { return { title: '', anchor: '' } });
+
+  const checkHeader = () => {
+    if (
+      window.scrollY >= header.value.offsetTop - 384 &&
+      window.scrollY <= header.value.offsetTop + (header.value.parentElement as HTMLElement).offsetHeight &&
+      currentHeader.value.title != props.title
+    ) {
+      currentHeader.value = {
+        title: props.title,
+        anchor: props.anchor,
+      };
+    }
+  }
 
   onMounted(() => {
+    checkHeader();
     window.addEventListener('scroll', () => {
-      if (window.scrollY >= header.value.offsetTop - 64) {
-        locked.value = true;
-        const links = document.querySelectorAll(`.nav li`);
-        links.forEach(link => link.classList.remove('active'));
-        document.querySelector(`.nav li[name=${props.anchor}]`)?.classList.add('active');
-      } else {
-        locked.value = false;
-        document.querySelector(`.nav li[name=${props.anchor}]`)?.classList.remove('active');
-      }
+      checkHeader();
     });
   });
 
@@ -43,15 +42,31 @@
     width: 100%;
     margin-bottom: 96px;
 
-    .title, .dummy { display: inline; }
+    @media screen and (max-width: 720px) {
+      margin-bottom: 64px;
+    }
+
+    .title {
+      display: inline;
+      @media screen and (max-width: 1272px) {
+        max-width: calc(50vw - 100px);
+      }
+
+      @media screen and (max-width: 720px) {
+        max-width: calc(50vw - 36px);
+        font-size: 32px;
+      }
+
+      @media screen and (max-width: 520px) {
+        font-size: 22px;
+      }
+    }
 
     .title {
       width: fit-content;
       max-width: 538px;
-      // text-align: center;
       font-size: 48px;
       color: var(--primary);
-      // To not overlay first line
       margin-left: 1px;
       background: radial-gradient(closest-side, var(--bg-color) 75%, transparent);
       font-weight: 500;
@@ -68,18 +83,7 @@
       }
 
       @media screen and (max-width: 520px) {
-        font-size: 24px;
-        max-width: 75%;
-      }
-
-      position: relative;
-      z-index: 10000;
-
-      &.locked {
-        position: fixed;
-        top: 64px;
-        z-index: 10000;
-        background: var(--bg-color);
+        font-size: 22px;
       }
 
       &:before {
@@ -87,7 +91,5 @@
         color: var(--light);
       }
     }
-
-    .dummy { font-size: 48px; }
   }
 </style>

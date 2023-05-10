@@ -25,13 +25,9 @@
     background-image: linear-gradient(190deg, var(--bg-color)0 70%, transparent 80%);
 
     @media screen and (max-width: 720px) {
-      margin-top: 60px;
+      margin-top: 32px;
 
       .content .title .name { font-size: 64px; }
-    }
-
-    @media screen and (max-width: 450px) {
-      margin-top: 120px;
     }
 
     .content {

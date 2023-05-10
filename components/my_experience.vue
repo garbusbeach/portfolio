@@ -70,6 +70,10 @@
   .my-experience {
     .header {
       margin-bottom: 160px;
+
+      @media screen and (max-width: 720px) {
+        margin-bottom: 64px;
+      }
     }
 
     @media screen and (max-width: 540px) {
@@ -111,8 +115,6 @@
           @media screen and (max-width: 720px) {
             flex-direction: column;
             width: calc(100% - 1px);
-            border-top: solid 1px #222;
-            border-bottom: solid 1px #222;
           }
 
           ul {
@@ -127,6 +129,8 @@
               width: 100%;
               display: flex;
               flex-direction: row;
+              border-top: solid 1px #222;
+              border-bottom: solid 1px #222;
             }
 
             li {
@@ -163,6 +167,7 @@
             width: 50%;
             @media screen and (max-width: 720px) {
               width: 100%;
+              margin-top: 32px;
             }
             .position-info {
               position: absolute;
@@ -172,12 +177,10 @@
               max-width: 540px;
 
               @media screen and (max-width: 1272px) {
-                margin-top: 24px;
                 width: calc(50% - 96px);
               }
 
               @media screen and (max-width: 720px) {
-                margin-top: 24px;
                 width: calc(100% - 64px);
               }
 

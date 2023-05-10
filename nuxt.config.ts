@@ -4,7 +4,7 @@ export default defineNuxtConfig({
   app: {
     head: { // Default head tags
       charset: 'utf-8',
-      title: 'Piotr Garbicz - Full Stack Developer',
+      title: 'Piotr Garbicz // Developer',
       meta: [ // Default meta tags
         { name: 'format-detection', content: 'telephone=no' }
       ],

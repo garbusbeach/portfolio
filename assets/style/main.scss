@@ -69,6 +69,8 @@ span.hl {
   flex-direction: column;
 
   @media screen and (max-width: 720px) {
+    padding-bottom: 24px;
+    padding-top: 48px;
     width: 100%;
   }
 }

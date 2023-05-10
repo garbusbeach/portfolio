@@ -46,6 +46,10 @@
         justify-content: space-between;
         margin-bottom: 64px;
 
+        @media screen and (max-width: 540px) {
+          flex-direction: column;
+        }
+
         .name {
           width: 25%;
           letter-spacing: var(--condensed);
@@ -56,6 +60,11 @@
           text-align: center;
           flex-direction: column;
           justify-content: center;
+
+          @media screen and (max-width: 540px) {
+            width: 100%;
+            margin-bottom: 32px;
+          }
 
           .title {
             position: relative;
@@ -71,6 +80,13 @@
             top: -10px;
             width: 100%;
             height: 8px;
+
+            @media screen and (max-width: 540px) {
+              width: 50%;
+              margin: 0 auto;
+              height: 4px;
+              top: 0;
+            }
           }
         }
 
@@ -81,6 +97,10 @@
           background: var(--bg-color);
           border: solid 1px var(--light);
           padding: 16px;
+
+          @media screen and (max-width: 540px) {
+            width: 100%;
+          }
         }
       }
 

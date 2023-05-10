@@ -1,7 +1,17 @@
 <template>
   <div class="nav">
     <div class="navbar">
-      <h1 class="brand">Piotr Garbicz</h1>
+      <div class="info">
+        <h1 class="brand">Piotr Garbicz</h1>
+        <div class="previous-title" :class="{'animate': animatePreviousTitle}" v-if="previousTitle">
+          <span>//</span>
+          {{ previousTitle }}
+        </div>
+        <h2 class="section" :class="{'animate': animateTitle}">
+          <span v-if="currentHeader.title">//</span>
+          {{ currentTitle }}
+        </h2>
+      </div>
       <div class="links">
         <ul>
           <li name="about"><a href="#about">About</a></li>
@@ -14,6 +24,50 @@
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+  const currentHeader = useState('currentHeader', () => { return { anchor: '', title: '' } });
+  let firstHeader: HTMLElement;
+
+  let currentTitle = '';
+  let previousTitle = '';
+  const animateTitle = ref(false);
+  const animatePreviousTitle = ref(false);
+
+  function changeTitle(title: string) {
+    if (currentTitle == title) return;
+    previousTitle = currentTitle;
+    currentTitle = title;
+
+    document.title = `Piotr Garbicz // ${title}`;
+    animateTitle.value = true;
+    animatePreviousTitle.value = true;
+
+    setTimeout(() => { animateTitle.value = false; }, 200);
+    setTimeout(() => { animatePreviousTitle.value = false;; previousTitle = ''; }, 200);
+  }
+
+  watch(currentHeader, (header) => {
+    changeTitle(header.title);
+    if (!header.title) return;
+
+    const links = document.querySelectorAll(`.nav li`);
+    links.forEach(link => link.classList.remove('active'));
+    document.querySelector(`.nav li[name=${header.anchor}]`)?.classList.add('active');
+  });
+
+  onMounted(() => {
+    firstHeader = document.querySelectorAll('.header .title')[0] as HTMLElement;
+    window.addEventListener('scroll', () => {
+      if (window.scrollY <= firstHeader.offsetTop - 384) {
+        currentHeader.value = {
+          anchor: '',
+          title: ''
+        }
+      }
+    });
+  })
+</script>
 
 <style lang="scss">
 .nav {
@@ -56,16 +110,83 @@
     //   padding:  4px;
     // }
 
+    .info {
+      width: 50%;
+      padding: 8px 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
     .brand {
-      width: 25%;
-      text-align: center;
+      width: 100%;
       font-size: 24px;
       font-weight: 400;
       letter-spacing: var(--condensed);
     }
 
+    .section, .previous-title {
+      display: inline;
+      color: var(--primary);
+      font-size: 32px;
+      span { color: var(--light); }
+    }
+
+    .section {
+      @keyframes animateTitle {
+        0% {
+          opacity: 0;
+          transform: translateX(25px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateX(0px);
+        }
+      }
+      &.animate {
+        animation: animateTitle 0.2s ease-in-out;
+      }
+    }
+
+    .previous-title {
+      position: absolute;
+      bottom: 18px;
+      max-width: 540px;
+
+      @media screen and (max-width: 1272px) {
+        width: calc(50% - 96px);
+      }
+
+      @media screen and (max-width: 720px) {
+        width: calc(100% - 64px);
+      }
+      &.animate {
+        animation: animatePreviousTitle 0.1s ease-in-out forwards;
+      }
+
+      @keyframes animatePreviousTitle {
+        0% {
+          opacity: 1;
+          transform: translateX(0px);
+        }
+        100% {
+          opacity: 0;
+          transform: translateX(-100px);
+        }
+      }
+    }
+
     .links {
       width: 25%;
+      @media screen and (max-width: 720px) {
+        width: 50%;
+        text-align: left;
+      }
+
+      @media screen and (max-width: 520px) {
+        text-align: right;
+      }
+
       ul > li {
         list-style: none;
         transition: all linear 0.1s;

@@ -3,7 +3,7 @@
     <Header title="Contact" anchor="contact" />
     <div class="content">
       <div class="contact-links">
-        <div class="title">Connect with me online</div>
+        <div class="title">Reach with me online</div>
         <div class="contact-link">
           LinkedIn: <a target="_blank" href="https://www.linkedin.com/in/piotr-garbicz">linkedin.com/in/piotr-garbicz</a>
         </div>
@@ -53,6 +53,12 @@
         }
       }
 
+      .contact-links {
+        @media screen and (max-width: 720px) {
+          margin-bottom: 32px;
+        }
+      }
+
       .contact-link {
         // color: var(--light-2);
         font-size: 16px;
@@ -61,6 +67,10 @@
         @media screen and (max-width: 720px) {
           text-align: left;
           margin-bottom: 16px;
+
+          a {
+            display: block;
+          }
         }
 
         &::before {

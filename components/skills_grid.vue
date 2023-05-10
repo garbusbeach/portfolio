@@ -93,7 +93,6 @@
 
     @media screen and (max-width: 720px) {
       width: 100%;
-      max-width: 450px;
       margin: 0 auto;
     }
 
