@@ -46,7 +46,8 @@
     .title, .dummy { display: inline; }
 
     .title {
-      width: 538px;
+      width: fit-content;
+      max-width: 538px;
       // text-align: center;
       font-size: 48px;
       color: var(--primary);
@@ -58,17 +59,17 @@
       display: inline-block;
 
       @media screen and (max-width: 1272px) {
-        width: calc(50vw - 100px);
+        max-width: calc(50vw - 100px);
       }
 
       @media screen and (max-width: 720px) {
-        width: calc(50vw - 36px);
+        max-width: calc(50vw - 36px);
         font-size: 32px;
       }
 
       @media screen and (max-width: 520px) {
         font-size: 24px;
-        max-width: 33%;
+        max-width: 75%;
       }
 
       position: relative;

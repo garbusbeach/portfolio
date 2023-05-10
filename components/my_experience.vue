@@ -68,14 +68,12 @@
 
 <style lang="scss">
   .my-experience {
-    // min-height: 100vh;
-
-    @media screen and (max-width: 720px) {
-      margin-bottom: 540px;
-    }
-
     .header {
       margin-bottom: 160px;
+    }
+
+    @media screen and (max-width: 540px) {
+      margin-bottom: 256px;
     }
 
     .v-enter-active, .v-leave-active {
@@ -112,11 +110,15 @@
 
           @media screen and (max-width: 720px) {
             flex-direction: column;
+            width: calc(100% - 1px);
+            border-top: solid 1px #222;
+            border-bottom: solid 1px #222;
           }
 
           ul {
             // margin-left: 48px;
             // margin-right: 24px;
+            background-color: var(--bg-color);
             width: 25%;
 
             @media screen and (max-width: 720px) {
@@ -138,7 +140,7 @@
               @media screen and (max-width: 720px) {
                 padding: 8px 4px;
                 font-size: 16px;
-                width: 33%;
+                width: 33.333%;
               }
 
               &.active, &:hover {
@@ -171,7 +173,12 @@
 
               @media screen and (max-width: 1272px) {
                 margin-top: 24px;
-                width: calc(100%/2 - 32px);
+                width: calc(50% - 96px);
+              }
+
+              @media screen and (max-width: 720px) {
+                margin-top: 24px;
+                width: calc(100% - 64px);
               }
 
               .position-duration {

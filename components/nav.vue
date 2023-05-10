@@ -30,8 +30,8 @@
     width: 100%;
     max-width: var(--max-width);
     margin: 0 auto;
-    padding-top: 24px;
-    padding-bottom: 48px;
+    padding-top: 12px;
+    padding-bottom: 12px;
     display: flex;
     justify-content: space-between;
 
@@ -71,6 +71,8 @@
         transition: all linear 0.1s;
         // display: inline;
         // margin-right: 16px;
+
+        a { color: var(--light); };
 
         &:hover, &.active {
           color: var(--primary);

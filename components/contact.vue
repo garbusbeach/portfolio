@@ -32,6 +32,10 @@
       flex-direction: row;
       justify-content: space-between;
 
+      @media screen and (max-width: 720px) {
+        flex-direction: column;
+      }
+
       .title {
         font-size: 24px;
         font-weight: 400;
@@ -43,13 +47,20 @@
       .contact-links, .contact-email {
         width: 50%;
         text-align: center;
+
+        @media screen and (max-width: 720px) {
+          width: 100%;
+        }
       }
 
       .contact-link {
-        color: var(--light-2);
+        // color: var(--light-2);
         font-size: 16px;
-        a {
-          text-decoration: underline;
+        a { text-decoration: underline; }
+
+        @media screen and (max-width: 720px) {
+          text-align: left;
+          margin-bottom: 16px;
         }
 
         &::before {

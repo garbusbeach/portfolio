@@ -104,8 +104,10 @@
       justify-content: center;
       padding: 8px 16px;
       font-size: 18px;
+      color: var(--light);
 
       @media screen and (max-width: 720px) {
+        background: radial-gradient(closest-side, var(--bg-color) 75%, transparent);
         width: 50%;
         img { width: 64px; height: 64px; }
 
