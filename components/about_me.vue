@@ -20,8 +20,79 @@
   </div>
 </template>
 
+<script setup lang="ts">
+
+  onMounted(() => {
+    const backdropPrimaryLight = document.querySelector('.backdrop .primary-light') as HTMLElement;
+    const backdropPrimary = document.querySelector('.backdrop .primary') as HTMLElement;
+    const image = document.querySelector('.photo .image') as HTMLElement;
+
+    let clientX =0, clientY=0, scrolled: number = 0;
+
+    const animateBox = function(event: MouseEvent | Event) {
+      // const x = event.clientX / window.innerWidth * 128 - 64;
+      // const y = event.clientY / window.innerHeight * 128 - 64;
+      // const x = event.clientX / window.innerWidth * 16 - 8;
+
+      if (typeof (event as MouseEvent).clientX === 'number') {
+        clientX = (event as MouseEvent).clientX;
+        clientY = (event as MouseEvent).clientY;
+        scrolled = window.scrollY;
+      } else {
+        // clientY = window.scrollY - scrolled  - image.getBoundingClientRect().top - image.offsetHeight / 2;
+        // scrolled = window.scrollY;
+        // console.log(window.scrollY - scrolled);
+        // if()
+        clientY = clientY + (window.scrollY - scrolled)/16;
+        scrolled = window.scrollY;
+      }
+
+      //calc x and y relative to var image position
+      let x = clientX - image.getBoundingClientRect().left - image.offsetWidth / 2;
+      let y = clientY - image.getBoundingClientRect().top - image.offsetHeight / 2;
+      x = x/16;
+      y = y/16;
+      let max = 64;
+      if (x > max) x = max;
+      if (x < -max) x = -max;
+      if (y > max) y = max;
+      if (y < -max) y = -max;
+
+      image.style.setProperty('transform', `translate(${x/4}px, ${y/4}px)`);
+
+      backdropPrimary.style.setProperty('top', `${y * 2}px`);
+      backdropPrimary.style.setProperty('left', `${x * 2}px`);
+      const shadow = ((Math.abs(x) + Math.abs(y)) * 2);
+      // backdropPrimary.style.setProperty('border-width', `${Math.abs(x) * 2}px`);
+      // backdropPrimary.style.setProperty('box-shadow', `0 0 ${shadow}px var(--primary), inset 0 0 ${shadow}px var(--primary)`);
+
+      backdropPrimaryLight.style.setProperty('top', `${y}px`);
+      backdropPrimaryLight.style.setProperty('left', `${x}px`);
+      // backdropPrimaryLight.style.setProperty('border-width', `${Math.abs(x) * 2}px`);
+      // backdropPrimaryLight.style.setProperty('box-shadow', `0 0 ${shadow}px var(--primaryLight), inset 0 0 ${shadow}px var(--primaryLight)`);
+
+      // document.getElementById('about')?.style.setProperty('--backdrop-margin-x', `${x}px;`);
+      // document.getElementById('about')?.style.setProperty('--backdrop-margin-y', `${y}px;`);
+
+      // backdrop.style.transform = `translate(-${x * 8}px, -${y * 8}px)`;
+      // image.style.transform = `translate(${x * 8}px, ${y * 8}px)`;
+      // primaryLight.style.transform = `translate(${x * 4}px, ${y * 4}px)`;
+      // primary.style.transform = `translate(${x * 2}px, ${y * 2}px)`;
+    };
+
+    document.onmousemove = animateBox;
+    document.onscroll = animateBox;
+  });
+</script>
+
 <style lang="scss">
   .about-me {
+    --backdrop-margin-x: 16px;
+    --backdrop-margin-y: 16px;
+    @media screen and (max-width: 1144px) {
+      --backdrop-margin-x: -16px;
+      --backdrop-margin-y: -16px;
+    }
     // border-image: linear-gradient(to right, red 1px, transparent 1px);
     // border-image-width: 100%;
 
@@ -60,7 +131,7 @@
           width: 100%;
           height: 100%;
           padding: 50%;
-          box-shadow: 0 0 4px rgba(255, 255, 255, 0.5);
+          // box-shadow: 0 0 64px rgba(255, 255, 255, 0.5);
           border-radius: 16px;
           background-image: url('~/assets/images/this_is_picture_of_me.jpg');
           background-size: cover;
@@ -82,26 +153,20 @@
             padding: calc(50% - 4px);
             box-sizing: content-box;
 
-            --backdrop-margin: 16px;
-
-            @media screen and (max-width: 1144px) {
-              --backdrop-margin: -16px;
-            }
-
             &.primary-light {
               z-index: 50;
-              top: var(--backdrop-margin);
-              left: var(--backdrop-margin);
+              top: var(--backdrop-margin-y);
+              left: var(--backdrop-margin-x);
               border: solid 4px var(--primary-light);
-              box-shadow: 0 0 4px var(--primary-light);
+              // box-shadow: 0 0 64px var(--primary-light), inset 0 0 64px var(--primary-light);
             }
 
             &.primary {
               z-index: 25;
-              top: calc(var(--backdrop-margin) * 2);
-              left: calc(var(--backdrop-margin) * 2);
+              top: calc(var(--backdrop-margin-y) * 2);
+              left: calc(var(--backdrop-margin-x) * 2);
               border: solid 4px var(--primary);
-              box-shadow: 0 0 4px var(--primary);
+              // box-shadow: 0 0 64px var(--primary), inset 0 0 64px var(--primary);
             }
           }
         }

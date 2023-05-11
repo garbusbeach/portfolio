@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <h2 class="title" ref="header">
+    <h2 class="title" :class="{'hidden': hidden}" ref="header">
       {{ props.title }}
     </h2>
   </div>
@@ -13,12 +13,13 @@
   }>();
 
   const header = ref() as Ref<HTMLElement>;
+  const hidden = ref(false);
   const currentHeader = useState('currentHeader', () => { return { title: '', anchor: '' } });
 
   const checkHeader = () => {
     if (
       window.scrollY >= header.value.offsetTop - 384 &&
-      window.scrollY <= header.value.offsetTop + (header.value.parentElement as HTMLElement).offsetHeight &&
+      window.scrollY <= header.value.offsetTop + (header.value.parentElement as HTMLElement).offsetHeight + 384 &&
       currentHeader.value.title != props.title
     ) {
       currentHeader.value = {
@@ -27,6 +28,14 @@
       };
     }
   }
+
+  watch(currentHeader, (header) => {
+    if (header.title == props.title) {
+      hidden.value = true;
+    } else {
+      hidden.value = false;
+    }
+  });
 
   onMounted(() => {
     checkHeader();
@@ -72,6 +81,12 @@
       font-weight: 500;
       letter-spacing: var(--condensed);
       display: inline-block;
+      transition: all linear 0.3s;
+      opacity: 1;
+
+      &.hidden {
+        opacity: 0;
+      }
 
       @media screen and (max-width: 1272px) {
         max-width: calc(50vw - 100px);

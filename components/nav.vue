@@ -130,6 +130,10 @@
       color: var(--primary);
       font-size: 32px;
       span { color: var(--light); }
+
+      @media screen and (max-width: 720px) {
+        font-size: 24px;
+    }
     }
 
     .section {
@@ -218,12 +222,17 @@
           transition: all linear 0.1s;
         }
 
+        @media screen and (max-width: 520px) {
+          &:not(.btn):before { content: ''; }
+          &:not(.btn):after { content: ' //'; }
+        }
+
         &.btn {
           display: block;
           margin-top: 8px;
           // display: inline;
           font-weight: 500;
-          margin-right: 16px;
+          // margin-right: 16px;
         }
       }
     }
