@@ -30,6 +30,7 @@
     let clientX =0, clientY=0, scrolled: number = 0;
 
     const animateBox = function(event: MouseEvent | Event) {
+      if (window.screen.width < 720) return;
       // const x = event.clientX / window.innerWidth * 128 - 64;
       // const y = event.clientY / window.innerHeight * 128 - 64;
       // const x = event.clientX / window.innerWidth * 16 - 8;
@@ -62,14 +63,14 @@
 
       backdropPrimary.style.setProperty('top', `${y * 2}px`);
       backdropPrimary.style.setProperty('left', `${x * 2}px`);
-      const shadow = ((Math.abs(x) + Math.abs(y)) * 2);
+      const shadow = ((Math.abs(x) + Math.abs(y))/2);
       // backdropPrimary.style.setProperty('border-width', `${Math.abs(x) * 2}px`);
-      // backdropPrimary.style.setProperty('box-shadow', `0 0 ${shadow}px var(--primary), inset 0 0 ${shadow}px var(--primary)`);
+      backdropPrimary.style.setProperty('box-shadow', `0 0 ${shadow}px var(--primary), inset 0 0 ${shadow}px var(--primary)`);
 
       backdropPrimaryLight.style.setProperty('top', `${y}px`);
       backdropPrimaryLight.style.setProperty('left', `${x}px`);
       // backdropPrimaryLight.style.setProperty('border-width', `${Math.abs(x) * 2}px`);
-      // backdropPrimaryLight.style.setProperty('box-shadow', `0 0 ${shadow}px var(--primaryLight), inset 0 0 ${shadow}px var(--primaryLight)`);
+      backdropPrimaryLight.style.setProperty('box-shadow', `0 0 ${shadow}px var(--primary-light), inset 0 0 ${shadow}px var(--primary-light)`);
 
       // document.getElementById('about')?.style.setProperty('--backdrop-margin-x', `${x}px;`);
       // document.getElementById('about')?.style.setProperty('--backdrop-margin-y', `${y}px;`);
@@ -131,7 +132,7 @@
           width: 100%;
           height: 100%;
           padding: 50%;
-          // box-shadow: 0 0 64px rgba(255, 255, 255, 0.5);
+          box-shadow: 0 0 32px rgba(255, 255, 255, 0.5);
           border-radius: 16px;
           background-image: url('~/assets/images/this_is_picture_of_me.jpg');
           background-size: cover;
@@ -158,7 +159,7 @@
               top: var(--backdrop-margin-y);
               left: var(--backdrop-margin-x);
               border: solid 4px var(--primary-light);
-              // box-shadow: 0 0 64px var(--primary-light), inset 0 0 64px var(--primary-light);
+              box-shadow: 0 0 32px var(--primary-light), inset 0 0 32px var(--primary-light);
             }
 
             &.primary {
@@ -166,7 +167,7 @@
               top: calc(var(--backdrop-margin-y) * 2);
               left: calc(var(--backdrop-margin-x) * 2);
               border: solid 4px var(--primary);
-              // box-shadow: 0 0 64px var(--primary), inset 0 0 64px var(--primary);
+              box-shadow: 0 0 32px var(--primary), inset 0 0 32px var(--primary);
             }
           }
         }

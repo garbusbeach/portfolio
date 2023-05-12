@@ -39,7 +39,7 @@
     previousTitle = currentTitle;
     currentTitle = title;
 
-    document.title = `Piotr Garbicz // ${title}`;
+    document.title = `Piotr Garbicz // ${title || 'Developer'}`;
     animateTitle.value = true;
     animatePreviousTitle.value = true;
 
@@ -49,10 +49,11 @@
 
   watch(currentHeader, (header) => {
     changeTitle(header.title);
-    if (!header.title) return;
 
     const links = document.querySelectorAll(`.nav li`);
     links.forEach(link => link.classList.remove('active'));
+    if (!header.anchor) return;
+
     document.querySelector(`.nav li[name=${header.anchor}]`)?.classList.add('active');
   });
 

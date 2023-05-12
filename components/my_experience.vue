@@ -114,14 +114,14 @@
 
           @media screen and (max-width: 720px) {
             flex-direction: column;
-            width: calc(100% - 1px);
+            width: calc(100% - 2px);
           }
 
           ul {
             // margin-left: 48px;
             // margin-right: 24px;
             background-color: var(--bg-color);
-            width: 25%;
+            width: calc(25% - 2px);
 
             @media screen and (max-width: 720px) {
               margin-left: 0;
