@@ -26,21 +26,21 @@
                 <div class="task">Team management, managing few small interdisciplinary teams. Agile agile agile.</div>
                 <div class="task">Product planning and development - as lead developer and project manager. Keeping relations with key clients and partners.</div>
                 <div class="task">Onboarding new employees, organizing personal training sessions and leading new developers. </div>
-                <div class="task">Participation in code reviews for other developers to ensure code quality, adherence to coding standards, and identify areas for improvement.</div>
+                <div class="task">Participation in code reviews for other developers to ensure code quality, adherence to coding standards, and identifying areas for improvement.</div>
               </div>
             </Transition>
             <Transition>
               <div v-if="active === 1" class="position-info">
                 <div class="position-duration">November 2019 - May 2022</div>
-                <div class="task">Creating new product - integration of POS terminal and e-commerce transactions. Taking lead of R&D team, which created possibility of experiments with many technologies, such as: browser extensions, native java applications, electron js, C, and many more.</div>
-                <div class="task">Maintenance of experimental solutions, keeping in touch with clients and working with many teams from Europe.</div>
+                <div class="task">Leading an R&D team, which enabled us to experiment with many technologies, such as: browser extensions, native java applications, electron js, C, and many more.</div>
+                <div class="task">Maintaining experimental solutions, keeping in touch with clients and working with many teams from Europe.</div>
               </div>
             </Transition>
             <Transition>
               <div v-if="active === 2" class="position-info">
                 <div class="position-duration">November 2018 - November 2019</div>
-                <div class="task">Development of payment system gateway - core product of company.</div>
-                <div class="task">Creating many internal tools for company in Ruby on Rails, such as showcase app for clients, markdown CMS for documentation and more.</div>
+                <div class="task">Development of a payment gateway - the core product of the company.</div>
+                <div class="task">Creating many internal tools in Ruby on Rails, such as showcase app for clients, markdown CMS for documentation and more.</div>
               </div>
           </Transition>
           </div>
@@ -52,8 +52,8 @@
 
 <script setup lang="ts">
   const diff = new Date().getTime() - new Date(2018, 10, 1).getTime();
-  const years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365));
-  const months = Math.floor((diff - years * (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30));
+  const years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25));
+  const months = Math.floor((diff - years * (1000 * 60 * 60 * 24 * 365.35)) / (1000 * 60 * 60 * 24 * 30));
 
   const active = ref(0);
 
@@ -114,14 +114,14 @@
 
           @media screen and (max-width: 720px) {
             flex-direction: column;
-            width: calc(100% - 2px);
+            width: calc(100% - 1px);
           }
 
           ul {
             // margin-left: 48px;
             // margin-right: 24px;
             background-color: var(--bg-color);
-            width: calc(25% - 2px);
+            width: calc(25% - 1px);
 
             @media screen and (max-width: 720px) {
               margin-left: 0;

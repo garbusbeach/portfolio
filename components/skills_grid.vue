@@ -78,7 +78,7 @@
     </a>
     <a class="item" href="https://clickup.com/v3" target="_blank" rel=”nofollow”>
       <img src="~/assets/images/skills/clickup.png" alt="Clickup" />
-      Clickup
+      ClicUup
     </a>
     <a class="item" href="https://www.atlassian.com/pl/software/jira" target="_blank" rel=”nofollow”>
       <img src="~/assets/images/skills/jira.png" alt="Jira" />

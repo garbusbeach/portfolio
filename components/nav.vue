@@ -18,7 +18,7 @@
           <li name="skills"><a href="#skills">Skills</a></li>
           <li name="experience"><a href="#experience">Experience</a></li>
           <li name="contact"><a href="#contact">Contact</a></li>
-          <li class="btn"><a href="./piotr-garbicz-resume.pdf" download>Download Resume</a></li>
+          <li class="btn"><a href="./piotr-garbicz-resume.pdf" download>&gt; Download Resume &lt;</a></li>
         </ul>
       </div>
     </div>
@@ -131,6 +131,11 @@
       color: var(--primary);
       font-size: 32px;
       span { color: var(--light); }
+      font-weight: 500;
+      // background-image: linear-gradient(90deg, var(--primary), var(--primary-light));
+      // background-clip: text;
+      // color: transparent;
+      letter-spacing: var(--condensed);
 
       @media screen and (max-width: 720px) {
         font-size: 24px;

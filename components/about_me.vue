@@ -3,7 +3,7 @@
     <Header title="About me" anchor="about" />
     <div class="content">
       <div class="description">
-        Keeping balance between passions - music & technology. Ruby on Rails & JS fintech developer with near <a href="#experience">5 years of experience</a> and bachelor degree in jazz.<br/><br/>
+        Keeping balance between passions - music & technology. Ruby on Rails & JS fintech developer with nearly <a href="#experience">5 years of experience</a> and bachelor's degree in jazz.<br/><br/>
 
         I love to work with ambitious people and projects that give me the possibility to <span class="hl">leave a mark</span>. During my work experience I've had the pleasure to be frontend / backend / <a href="#skills">fullstack</a> / vue / RoR engineer, but also <a href="#experience">team leader</a>, project manager and lead the discovery team in a fintech company. My favourite environment is a place with a lot of challenges, and potential for self-development.<br/><br/>
 
