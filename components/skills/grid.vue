@@ -122,6 +122,10 @@
         transition: all linear 0.05s;
         // filter: saturate(0);
         filter: sepia(1) hue-rotate(120deg);
+
+        @media screen and (max-width: 540px) {
+          filter: none;
+        }
       }
 
       &:hover {

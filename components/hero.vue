@@ -35,9 +35,17 @@
       .content .title .name { font-size: 64px; }
     }
 
+    @media screen and (max-width: 540px) {
+      margin-top: 64px;
+    }
+
     .content {
       .title {
         margin-bottom: 96px;
+
+        @media screen and (max-width: 540px) {
+          margin-bottom: 32px;
+        }
 
         .prefix {
           font-size: 32px;

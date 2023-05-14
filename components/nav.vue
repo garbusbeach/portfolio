@@ -18,7 +18,7 @@
           <li name="skills"><a href="#skills">Skills</a></li>
           <li name="experience"><a href="#experience">Experience</a></li>
           <li name="contact"><a href="#contact">Contact</a></li>
-          <li class="btn"><a href="./piotr-garbicz-resume.pdf" download>&gt; Download Resume &lt;</a></li>
+          <li class="btn"><a href="./piotr-garbicz-resume.pdf" download>Download Resume</a></li>
         </ul>
       </div>
     </div>
@@ -239,6 +239,18 @@
           // display: inline;
           font-weight: 500;
           // margin-right: 16px;
+
+          &::before {
+            content: '> ';
+          }
+
+          &::after {
+            content: ' <';
+          }
+
+          @media screen and (max-width: 520px) {
+            &::before, &::after { content: ''; }
+          }
         }
       }
     }
