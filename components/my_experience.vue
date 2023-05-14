@@ -42,7 +42,7 @@
                 <div class="task">Development of a payment gateway - the core product of the company.</div>
                 <div class="task">Creating many internal tools in Ruby on Rails, such as showcase app for clients, markdown CMS for documentation and more.</div>
               </div>
-          </Transition>
+            </Transition>
           </div>
         </div>
       </div>
@@ -60,10 +60,13 @@
   const showTab = (index: number) => {
     active.value = index;
     document.querySelectorAll('#experience ul li').forEach((li, i) => {
-      if (i === index) { li.classList.add('active'); }
-      else { li.classList.remove('active'); }
+      if (i === index) {
+        li.classList.add('active');
+      } else {
+        li.classList.remove('active');
+      }
     });
-  }
+  };
 </script>
 
 <style lang="scss">
@@ -87,7 +90,6 @@
     .v-enter-from, .v-leave-to { opacity: 0; }
     .v-enter-from { margin-top: -25px; }
     .v-leave-to { margin-top: 100px; }
-
 
     .content {
       .company {

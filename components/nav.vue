@@ -3,7 +3,7 @@
     <div class="navbar">
       <div class="info">
         <h1 class="brand">Piotr Garbicz</h1>
-        <div class="previous-title" :class="{'animate': animatePreviousTitle}" v-if="previousTitle">
+        <div v-if="previousTitle" class="previous-title" :class="{'animate': animatePreviousTitle}">
           <span>//</span>
           {{ previousTitle }}
         </div>
@@ -26,7 +26,7 @@
 </template>
 
 <script setup lang="ts">
-  const currentHeader = useState('currentHeader', () => { return { anchor: '', title: '' } });
+  const currentHeader = useHeader();
   let firstHeader: HTMLElement;
 
   let currentTitle = '';
@@ -44,13 +44,13 @@
     animatePreviousTitle.value = true;
 
     setTimeout(() => { animateTitle.value = false; }, 200);
-    setTimeout(() => { animatePreviousTitle.value = false;; previousTitle = ''; }, 200);
+    setTimeout(() => { animatePreviousTitle.value = false; previousTitle = ''; }, 200);
   }
 
   watch(currentHeader, (header) => {
     changeTitle(header.title);
 
-    const links = document.querySelectorAll(`.nav li`);
+    const links = document.querySelectorAll('.nav li');
     links.forEach(link => link.classList.remove('active'));
     if (!header.anchor) return;
 
@@ -60,14 +60,14 @@
   onMounted(() => {
     firstHeader = document.querySelectorAll('.header .title')[0] as HTMLElement;
     window.addEventListener('scroll', () => {
-      if (window.scrollY <= firstHeader.offsetTop - 384) {
+      if (currentHeader.value.title && window.scrollY <= firstHeader.offsetTop - 384) {
         currentHeader.value = {
           anchor: '',
           title: ''
-        }
+        };
       }
     });
-  })
+  });
 </script>
 
 <style lang="scss">

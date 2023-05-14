@@ -2,7 +2,8 @@
   <div>
     <Nav />
     <Overlay />
-    <div class="wrapper">
+    <Token />
+    <div id="wrapper" class="wrapper">
       <Hero />
       <AboutMe />
       <Skills />
@@ -18,6 +19,8 @@
     width: 100%;
     max-width: var(--max-width);
     margin: 0 auto;
+    position: relative;
+    z-index: 20;
 
     --offset: 0px;
 
@@ -34,7 +37,12 @@
     background-size: 25%;
     background-image:
       linear-gradient(to right, #222 1px, transparent 1px),
-      linear-gradient(to left, #222 1px, transparent 1px),
+      linear-gradient(to left, #222 1px, transparent 1px);
+
+    // & > * {
+    //   position: relative;
+    //   z-index: 30;
+    // }
 
     // background-image: linear-gradient(to right, black 33%, rgba(255,255,255,0) 0%);
     // background-position: bottom;

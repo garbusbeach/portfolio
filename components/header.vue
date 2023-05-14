@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <h2 class="title" :class="{'hidden': hidden}" ref="header">
+    <h2 ref="header" class="title" :class="{'hidden': hidden}">
       {{ props.title }}
     </h2>
   </div>
@@ -14,20 +14,20 @@
 
   const header = ref() as Ref<HTMLElement>;
   const hidden = ref(false);
-  const currentHeader = useState('currentHeader', () => { return { title: '', anchor: '' } });
+  const currentHeader = useHeader();
 
   const checkHeader = () => {
     if (
-      window.scrollY >= header.value.offsetTop - 384 &&
-      window.scrollY <= header.value.offsetTop + (header.value.parentElement as HTMLElement).offsetHeight + 384 &&
+      window.scrollY > header.value.offsetTop - 384 &&
+      window.scrollY <= header.value.offsetTop + (header.value.parentElement as HTMLElement).offsetHeight + 168 &&
       currentHeader.value.title != props.title
     ) {
       currentHeader.value = {
         title: props.title,
-        anchor: props.anchor,
+        anchor: props.anchor
       };
     }
-  }
+  };
 
   watch(currentHeader, (header) => {
     if (header.title == props.title) {
@@ -39,9 +39,7 @@
 
   onMounted(() => {
     checkHeader();
-    window.addEventListener('scroll', () => {
-      checkHeader();
-    });
+    window.addEventListener('scroll', checkHeader);
   });
 
 </script>
