@@ -20,11 +20,18 @@
       document.querySelector('#token') as HTMLCanvasElement,
       size
     );
-    token.init();
-    token.resolveHeader(currentHeader.value);
+
+    if (window.innerWidth >= 720) {
+      token.init();
+      token.resolveHeader(currentHeader.value);
+    }
 
     window.addEventListener('resize', () => {
       const size = window.innerWidth > 1272 ? 540 : window.innerWidth / 2 - 98;
+      if (window.innerWidth < 720) return;
+
+      if (!token.ready) token.init();
+
       token.resize(size);
     });
   });

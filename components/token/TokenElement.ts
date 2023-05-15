@@ -8,6 +8,8 @@ export default class TokenElement {
   canvas: HTMLCanvasElement;
   size: number;
 
+  ready: boolean;
+
   scene: THREE.Scene;
   camera: THREE.Camera;
   renderer: THREE.WebGLRenderer;
@@ -23,6 +25,7 @@ export default class TokenElement {
   skillsListener?: (e: Event) => void | undefined;
 
   constructor(canvas: HTMLCanvasElement, size: number) {
+    this.ready = false;
     this.canvas = canvas;
     this.size = size;
 
@@ -43,6 +46,8 @@ export default class TokenElement {
     const light = new THREE.PointLight(0x660000, 0.5);
     light.position.set(0, 0, 15);
     this.scene.add(light);
+
+    this.ready = true;
 
     this.animate();
   }
@@ -185,8 +190,10 @@ export default class TokenElement {
       scrollValue = scrollValue + (distance / 10);
       scrolled = window.scrollY;
     };
-
-    document.addEventListener('scroll', this.skillsListener);
+    setTimeout(
+      () => document.addEventListener('scroll', this.skillsListener as (e: Event) => void),
+      1000
+    );
   }
 
   private onExperience() {
@@ -198,9 +205,9 @@ export default class TokenElement {
 
   private onContact() {
     const contactEl = document.querySelector('#contact') as HTMLElement;
-    const middle = window.scrollY + contactEl.getBoundingClientRect().top - (this.size / 16);
+    const middle = window.scrollY + contactEl.getBoundingClientRect().bottom - (this.size / 2);
     this.canvas.style.setProperty('top', `${middle}px`);
-    this.changeColumn(4);
+    this.changeColumn(2.5);
   }
 
   private activateShadow() {
