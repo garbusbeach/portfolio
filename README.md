@@ -6,7 +6,9 @@
   Personal portfolio - <a href="https://piotrgarbicz.dev" target="_blank">piotrgarbicz.dev</a>.<br>Built with <a href="https://nuxt.com/" target="_blank">Nuxt</a>.
 </p>
 
-<img align="center" src="./display-image.png"/>
+<p align="center">
+  <img src="./display-image.png"/>
+</p>
 
 ## 🛠 Installation
 
