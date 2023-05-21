@@ -13,29 +13,24 @@
   </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
   .hero {
     width: 100%;
     height: 100vh;
     margin: 0 auto;
-
-    --bg-rotation-1: 190deg;
-    --bg-rotation-2: 165deg;
-
-    --ratio: 10%;
-
     display: flex;
     align-items: center;
 
+    // fade-in effect for wrapper lines
     background-image: linear-gradient(170deg, var(--bg-color) 25%, transparent 40%);
 
-    @media screen and (max-width: 720px) {
+    @media screen and (max-width: $medium) {
+      // introduce margin-top to compensate for nav height
       margin-top: 32px;
-
       .content .title .name { font-size: 64px; }
     }
 
-    @media screen and (max-width: 540px) {
+    @media screen and (max-width: $small) {
       margin-top: 64px;
     }
 
@@ -43,33 +38,33 @@
       .title {
         margin-bottom: 96px;
 
-        @media screen and (max-width: 540px) {
+        @media screen and (max-width: $small) {
           margin-bottom: 32px;
         }
 
         .prefix {
           font-size: 32px;
-          color: var(--primary);
+          color: $primary;
         }
 
         .name {
           font-size: 96px;
-          color: var(--white);
+          color: $white;
 
-          @media screen and (max-width: 720px) {
+          @media screen and (max-width: $small) {
             font-size: 64px;
           }
         }
 
         .suffix {
           font-size: 32px;
-          color: var(--light);
+          color: $light;
         }
       }
 
       .subtitle {
         font-size: 32px;
-        color: var(--primary);
+        color: $primary;
       }
     }
   }

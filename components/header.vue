@@ -12,15 +12,18 @@
     anchor: string;
   }>();
 
-  const header = ref() as Ref<HTMLElement>;
-  const hidden = ref(false);
   const currentHeader = useHeader();
 
+  const header = ref() as Ref<HTMLElement>;
+  const hidden = ref(false);
+
+  // Check if changed header is not the current one, and viewport is
+  // in range of the header section - then change the current header
   const checkHeader = () => {
     if (
+      currentHeader.value.title != props.title &&
       window.scrollY > header.value.offsetTop - 384 &&
-      window.scrollY <= header.value.offsetTop + (header.value.parentElement as HTMLElement).offsetHeight + 168 &&
-      currentHeader.value.title != props.title
+      window.scrollY <= header.value.offsetTop + (header.value.parentElement as HTMLElement).offsetHeight + 168
     ) {
       currentHeader.value = {
         title: props.title,
@@ -29,6 +32,8 @@
     }
   };
 
+  // Check if the header is the current one, if yes, then hide it
+  // It will be visible in the nav
   watch(currentHeader, (header) => {
     if (header.title == props.title) {
       hidden.value = true;
@@ -44,41 +49,25 @@
 
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   .header {
     width: 100%;
     margin-bottom: 96px;
 
-    @media screen and (max-width: 720px) {
+    @media screen and (max-width: $medium) {
       margin-bottom: 64px;
     }
 
     .title {
-      display: inline;
-      @media screen and (max-width: 1272px) {
-        max-width: calc(50vw - 100px);
-      }
+      @include condensed-text;
 
-      @media screen and (max-width: 720px) {
-        max-width: calc(50vw - 36px);
-        font-size: 32px;
-      }
-
-      @media screen and (max-width: 520px) {
-        font-size: 22px;
-      }
-    }
-
-    .title {
       width: fit-content;
-      max-width: 538px;
+      max-width: 50%;
       font-size: 48px;
-      color: var(--primary);
+      color: $primary;
       margin-left: 1px;
-      background: radial-gradient(closest-side, var(--bg-color) 75%, transparent);
+      background: radial-gradient(closest-side, $dark 75%, transparent);
       font-weight: 500;
-      letter-spacing: var(--condensed);
-      display: inline-block;
       transition: all linear 0.3s;
       opacity: 1;
 
@@ -86,16 +75,12 @@
         opacity: 0;
       }
 
-      @media screen and (max-width: 1272px) {
-        max-width: calc(50vw - 100px);
-      }
-
-      @media screen and (max-width: 720px) {
-        max-width: calc(50vw - 36px);
+      @media screen and (max-width: $medium) {
+        max-width: 100%;
         font-size: 32px;
       }
 
-      @media screen and (max-width: 520px) {
+      @media screen and (max-width: $small) {
         font-size: 22px;
       }
 

@@ -1,0 +1,31 @@
+// Colors
+$white: #fff;
+$white-85: #d8d8d8;
+$white-65: #a5a5a5;
+
+$primary: #93FFD8;
+$primary-light: #CFFFDC;
+
+$light: $white-85;
+$light-2: $white-65;
+
+$primary-transparent-04: #93FFD80C;
+$primary-transparent-37: #93FFD860;
+
+$dark: #0D0D0D;
+
+// Breakpoints
+$large: 1080px;
+$medium: 720px;
+$small: 540px;
+
+$offset-lg: 96px;
+$offset-md: 32px;
+
+$lg-with-offset: calc($large + $offset-lg * 2);
+$md-with-offset: calc($medium + $offset-md * 2);
+
+// Z-index
+$z-index-nav: 1000;
+$z-index-token: 20;
+$z-index-wrapper: 25;

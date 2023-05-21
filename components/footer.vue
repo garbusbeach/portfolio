@@ -12,24 +12,23 @@
 
 <style lang="scss">
   .footer {
-    --bg-rotation: 350deg;
-    background-image: linear-gradient(355deg, var(--bg-color)0 55%, transparent 60%);
+    background-image: linear-gradient(355deg, $dark 0 55%, transparent 60%);
     padding-top: 224px;
     padding-bottom: 0;
     border-right: none;
 
-    @media screen and (max-width: 720px) {
+    @media screen and (max-width: $medium) {
       padding-top: 64px;
     }
 
     .content {
       text-align: center;
 
-      a { color: var(--primary); }
+      a { color: $primary; }
       p {
         margin-bottom: 64px;
 
-        @media screen and (max-width: 720px) {
+        @media screen and (max-width: $medium) {
           margin-bottom: 32px;
         }
       }

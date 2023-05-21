@@ -4,6 +4,14 @@ import { Header } from '~/composables/useHeader';
 
 const PRIMARY_COLOR = 0x93FFD8;
 
+/**
+ * Class used for serving animations on the token, during the page scroll.
+ * Base on the current header, the token will change its position and shape.
+ *
+ * After initialization, the token should be resolved with the `currentHeader`
+ * method, which will trigger animations - leaving previous header and enter
+ * the new one.
+ */
 export default class TokenElement {
   canvas: HTMLCanvasElement;
   size: number;
@@ -164,7 +172,6 @@ export default class TokenElement {
     let scrolled = window.scrollY;
     let scrollValue = 0;
 
-    // this.canvas.style.setProperty('transition', 'unset');
     this.skillsListener ||= (_e: Event) => {
       let distance = window.scrollY - scrolled;
       if (scrollValue <= 0) scrollValue = 0;

@@ -24,58 +24,61 @@
   </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
   .contact {
     padding-top: 224px;
+
+    @media screen and (max-width: $medium) {
+      padding-top: 320px;
+    }
+
     .content {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
 
-      @media screen and (max-width: 720px) {
+      @media screen and (max-width: $medium) {
         flex-direction: column;
       }
 
       .title {
+        @include condensed-text;
+
         font-size: 24px;
         font-weight: 400;
-        letter-spacing: var(--condensed);
         margin-bottom: 32px;
-        color: var(--primary);
+        color: $primary;
       }
 
       .contact-links, .contact-email {
         width: 50%;
         text-align: center;
 
-        @media screen and (max-width: 720px) {
+        @media screen and (max-width: $medium) {
           width: 100%;
         }
       }
 
       .contact-links {
-        @media screen and (max-width: 720px) {
+        @media screen and (max-width: $medium) {
           margin-bottom: 32px;
         }
       }
 
       .contact-link {
-        // color: var(--light-2);
         font-size: 16px;
         a { text-decoration: underline; }
 
-        @media screen and (max-width: 720px) {
+        @media screen and (max-width: $medium) {
           text-align: left;
           margin-bottom: 16px;
 
-          a {
-            display: block;
-          }
+          a { display: block; }
         }
 
         &::before {
           content: '// ';
-          color: var(--primary);
+          color: $primary;
           font-weight: 600;
         }
       }

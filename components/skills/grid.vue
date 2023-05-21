@@ -78,7 +78,7 @@
     </a>
     <a class="item" href="https://clickup.com/v3" target="_blank" rel="nofollow">
       <img src="~/assets/images/skills/clickup.png" alt="Clickup">
-      ClicUup
+      ClickUp
     </a>
     <a class="item" href="https://www.atlassian.com/pl/software/jira" target="_blank" rel="nofollow">
       <img src="~/assets/images/skills/jira.png" alt="Jira">
@@ -91,7 +91,7 @@
   .item-container {
     width: 100%;
 
-    @media screen and (max-width: 720px) {
+    @media screen and (max-width: $medium) {
       width: 100%;
       margin: 0 auto;
     }
@@ -103,10 +103,10 @@
       justify-content: center;
       padding: 8px 16px;
       font-size: 18px;
-      color: var(--light);
+      color: $light;
 
-      @media screen and (max-width: 720px) {
-        background: radial-gradient(closest-side, var(--bg-color) 75%, transparent);
+      @media screen and (max-width: $medium) {
+        background: radial-gradient(closest-side, $dark 75%, transparent);
         width: 50%;
         img { width: 64px; height: 64px; }
 
@@ -120,10 +120,10 @@
         margin-right: 12px;
 
         transition: all linear 0.05s;
-        // filter: saturate(0);
         filter: sepia(1) hue-rotate(120deg);
 
-        @media screen and (max-width: 540px) {
+        @media screen and (max-width: $small) {
+          // don't apply filter on smaller screens - display icons, as they are
           filter: none;
         }
       }
@@ -133,7 +133,6 @@
         img {
           filter: saturate(1);
           transform: scale(1.25);
-          // transform: perspective(80px) rotateY(15deg) scale(1.25) rotateX(10deg);
         }
       }
     }

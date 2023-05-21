@@ -6,47 +6,56 @@
   import TokenElement from './TokenElement';
 
   let token: TokenElement;
-
   const currentHeader = useHeader();
 
+  const calcSize = () => {
+    // Set the size of the token - for screen size above 1272px and below
+    const size = window.innerWidth > 1272 ? 540 : window.innerWidth / 2 - 98;
+    return size;
+  };
+
+  // Pass new header to the token, to change animation state
   watch(currentHeader, (header) => {
     token.resolveHeader(header);
   });
 
   onMounted(() => {
-    const size = window.innerWidth > 1272 ? 540 : window.innerWidth / 2 - 98;
-
     token = new TokenElement(
       document.querySelector('#token') as HTMLCanvasElement,
-      size
+      calcSize()
     );
 
+    // If user is on mobile, don't show the token
     if (window.innerWidth >= 720) {
       token.init();
       token.resolveHeader(currentHeader.value);
     }
 
     window.addEventListener('resize', () => {
-      const size = window.innerWidth > 1272 ? 540 : window.innerWidth / 2 - 98;
+      // Skip if user is on mobile
       if (window.innerWidth < 720) return;
 
+      // If user was on mobile, and now is on desktop, show the token
       if (!token.ready) token.init();
 
-      token.resize(size);
+      token.resize(calcSize());
     });
   });
 
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   #token {
+    // Base dimensions, will be overwritten by JS
     width: 540px;
     height: 540px;
     position: absolute;
+
+    // Base position for fade-in animation
     top: calc(50vh - 270px);
-    // 50% - 270px (1/2 of token size) - 540px (2 bars) - 2px (border)
     right: calc(50vw - 677px);
-    z-index: 20;
+
+    z-index: $z-index-token;
     transition: all 1s;
     opacity: 0;
 
@@ -61,8 +70,7 @@
       @media screen and (max-width: 1272px) {
       width: calc(50vw - 96px);
       height: calc(50vw - 96px);
-      right: calc(96px - (50vw - 96px)/2 + 2px + (50vw - 96px)/4);
-      // right: calc(26px - 12.5vw);
+      right: calc(96px - (50vw - 96px) / 2 + 2px + (50vw - 96px) / 4);
     }
 
     @media screen and (max-width: 720px) {

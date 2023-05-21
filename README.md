@@ -1,42 +1,39 @@
-# Nuxt 3 Minimal Starter
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+<h1 align="center">
+  Piotr Garbicz
+</h1>
+<p align="center">
+  Personal portfolio - <a href="https://piotrgarbicz.dev" target="_blank">piotrgarbicz.dev</a>.<br>Built with <a href="https://nuxt.com/" target="_blank">Nuxt</a>.
+</p>
 
-## Setup
+![display-image](./display-image.png)
 
-Make sure to install the dependencies:
+## 🛠 Installation
 
-```bash
-# yarn
-yarn install
+1. Install dependencies
 
-# npm
-npm install
+  ```sh
+  yarn install
+  ```
 
-# pnpm
-pnpm install
-```
+## 🚀 Development
 
-## Development Server
+1. Start dev server
 
-Start the development server on `http://localhost:3000`
+  ```sh
+  yarn dev
+  ```
 
-```bash
-npm run dev
-```
+## 🚀 Generating static website
 
-## Production
+1. Generate a full static production build
 
-Build the application for production:
+  ```sh
+  yarn build
+  ```
 
-```bash
-npm run build
-```
+2. Preview of the build
 
-Locally preview production build:
-
-```bash
-npm run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+  ```sh
+  yarn preview
+  ```

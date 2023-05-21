@@ -51,6 +51,7 @@
 </template>
 
 <script setup lang="ts">
+  // Basic date operation for primary experience
   const diff = new Date().getTime() - new Date(2018, 10, 1).getTime();
   const years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25));
   const months = Math.floor((diff - years * (1000 * 60 * 60 * 24 * 365.35)) / (1000 * 60 * 60 * 24 * 30));
@@ -60,26 +61,22 @@
   const showTab = (index: number) => {
     active.value = index;
     document.querySelectorAll('#experience ul li').forEach((li, i) => {
-      if (i === index) {
-        li.classList.add('active');
-      } else {
-        li.classList.remove('active');
-      }
+      i === index ? li.classList.add('active') : li.classList.remove('active');
     });
   };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   .my-experience {
     .header {
       margin-bottom: 160px;
 
-      @media screen and (max-width: 720px) {
+      @media screen and (max-width: $medium) {
         margin-bottom: 64px;
       }
     }
 
-    @media screen and (max-width: 540px) {
+    @media screen and (max-width: $small) {
       margin-bottom: 256px;
     }
 
@@ -97,14 +94,14 @@
           margin-bottom: 32px;
 
           .title {
-            color: var(--white);
+            @include condensed-text;
+            color: $white;
             font-size: 22px;
             margin-bottom: 8px;
-            letter-spacing: var(--condensed);
 
             a {
               font-weight: bold;
-              color: var(--primary);
+              color: $primary;
             }
           }
         }
@@ -114,18 +111,18 @@
           flex-direction: row;
           justify-content: space-between;
 
-          @media screen and (max-width: 720px) {
+          @media screen and (max-width: $medium) {
             flex-direction: column;
+            // 1px due to column border - only visual thing
             width: calc(100% - 1px);
           }
 
           ul {
-            // margin-left: 48px;
-            // margin-right: 24px;
-            background-color: var(--bg-color);
+            background-color: $dark;
+            // 1px due to column border - only visual thing
             width: calc(25% - 1px);
 
-            @media screen and (max-width: 720px) {
+            @media screen and (max-width: $medium) {
               margin-left: 0;
               margin-right: 0;
               width: 100%;
@@ -139,35 +136,35 @@
               width: 100%;
               list-style: none;
               padding: 16px 8px;
-              color: var(--light-2);
-              border-left: solid 2px var(--light-2);
+              color: $light-2;
+              border-left: solid 2px $light-2;
               transition: all linear 0.1s;
 
-              @media screen and (max-width: 720px) {
+              @media screen and (max-width: $medium) {
                 padding: 8px 4px;
                 font-size: 16px;
                 width: 33.333%;
               }
 
               &.active, &:hover {
-                color: var(--primary);
+                color: $primary;
               }
 
               &:hover {
                 cursor: pointer;
-                border-left: solid 2px var(--primary);
+                border-left: solid 2px $primary;
               }
 
               &.active {
-                border-left: solid 4px var(--primary);
-                background: var(--primary-transparent);
+                border-left: solid 4px $primary;
+                background: $primary-transparent-04;
               }
             }
           }
 
           .position-container {
             width: 50%;
-            @media screen and (max-width: 720px) {
+            @media screen and (max-width: $medium) {
               width: 100%;
               margin-top: 32px;
             }
@@ -176,33 +173,33 @@
               display: flex;
               flex-direction: column;
               justify-content: space-between;
-              max-width: 540px;
 
-              @media screen and (max-width: 1272px) {
-                width: calc(50% - 96px);
+              @media screen and (max-width: $lg-with-offset) {
+                width: 50%;
               }
 
-              @media screen and (max-width: 720px) {
-                width: calc(100% - 64px);
+              @media screen and (max-width: $medium) {
+                max-width: unset;
+                width: 100%;
               }
 
               .position-duration {
-                color: var(--light);
+                @include condensed-text;
+
+                color: $light;
                 margin-bottom: 16px;
                 font-size: 16px;
-                letter-spacing: var(--condensed);
               }
 
               .task {
-                color: var(--light-2);
+                color: $light-2;
                 font-size: 16px;
-                // padding-right: 16px;
                 margin-bottom: 16px;
                 font-weight: 400;
 
                 &::before {
                   content: '// ';
-                  color: var(--primary);
+                  color: $primary;
                   font-weight: 600;
                 }
               }

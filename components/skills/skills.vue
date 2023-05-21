@@ -36,7 +36,7 @@
   </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
   .skills {
     .content {
       .backend, .frontend {
@@ -46,22 +46,23 @@
         justify-content: space-between;
         margin-bottom: 64px;
 
-        @media screen and (max-width: 540px) {
+        @media screen and (max-width: $small) {
           flex-direction: column;
         }
 
         .name {
+          @include condensed-text;
+
           width: 25%;
-          letter-spacing: var(--condensed);
           font-size: 18px;
-          color: var(--light);
+          color: $light;
           text-align: center;
           display: flex;
           text-align: center;
           flex-direction: column;
           justify-content: center;
 
-          @media screen and (max-width: 540px) {
+          @media screen and (max-width: $small) {
             width: 100%;
             margin-bottom: 32px;
           }
@@ -81,7 +82,7 @@
             width: 100%;
             height: 8px;
 
-            @media screen and (max-width: 540px) {
+            @media screen and (max-width: $small) {
               width: 50%;
               margin: 0 auto;
               height: 4px;
@@ -93,9 +94,9 @@
         .explainer {
           width: 50%;
           font-size: 16px;
-          color: var(--light);
-          background: var(--bg-color);
-          border: solid 1px var(--light);
+          color: $light;
+          background: $dark;
+          border: solid 1px $light;
           padding: 16px;
 
           @media screen and (max-width: 540px) {
@@ -111,10 +112,10 @@
     .subtitle {
       font-size: 24px;
       font-weight: 500;
-      color: var(--primary);
+      color: $primary;
       text-align: center;
       margin: 64px 0;
-      &::before { content: '// '; color: var(--light); }
+      &::before { content: '// '; color: $light; }
     }
   }
 </style>

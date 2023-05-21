@@ -1,0 +1,21 @@
+@import './variables.scss';
+
+// Condensed text, to create "display" type and lighter text
+@mixin condensed-text { letter-spacing: -1px; }
+
+// Default containers
+@mixin scaled-width {
+  width: 100%;
+  max-width: $large;
+  margin: 0 auto;
+
+  @media screen and (max-width: ($large + $offset-lg * 2)) {
+    width: calc(100% - #{$offset-lg * 2});
+    margin: 0 $offset-lg;
+  }
+
+  @media screen and (max-width: $medium) {
+    width: calc(100% - #{$offset-md * 2});
+    margin: 0 $offset-md;
+  }
+}

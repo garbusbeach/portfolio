@@ -5,31 +5,17 @@
 }
 
 :root {
-  --white: #fff;
-  --light: #d8d8d8; // 85%
-  --light-2: #a5a5a5; // 65%
-
-  --primary: #93FFD8;
-  --primary-light: #CFFFDC;
-  --bg-color: #0D0D0D;
-  --primary-transparent: #93FFD80C;
-  --primary-transparent-2: #93FFD860;
-
-  --max-width: 1080px;
-  --mobile-breakpoint: var(--max-width);
-
-  --condensed: -1px;
   scroll-behavior: smooth;
 }
 
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-thumb {
-  background: var(--primary);
+  background: $primary;
   border-radius: 0px;
 }
 
 ::selection {
-  background: var(--primary-transparent-2);
+  background: $primary-transparent-37;
 }
 
 * {
@@ -41,24 +27,16 @@
 }
 
 body {
-  background-color: var(--bg-color);
-  color: var(--light);
+  background-color: $dark;
+  color: $light;
   overflow-x: hidden;
 }
 
 a {
   text-decoration: none;
-  color: var(--primary);
+  color: $primary;
 
-  &:hover {
-    color: var(--primary);
-    text-decoration: underline;
-  }
-}
-
-// highlight
-span.hl {
-  color: var(--primary);
+  &:hover { text-decoration: underline; }
 }
 
 .container {
@@ -68,7 +46,7 @@ span.hl {
   display: flex;
   flex-direction: column;
 
-  @media screen and (max-width: 720px) {
+  @media screen and (max-width: $medium) {
     padding-bottom: 24px;
     padding-top: 48px;
     width: 100%;
