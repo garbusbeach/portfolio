@@ -1,12 +1,12 @@
-
 <h1 align="center">
-  Piotr Garbicz
+  piotrgarbicz.dev
 </h1>
+
 <p align="center">
   Personal portfolio - <a href="https://piotrgarbicz.dev" target="_blank">piotrgarbicz.dev</a>.<br>Built with <a href="https://nuxt.com/" target="_blank">Nuxt</a>.
 </p>
 
-![display-image](./display-image.png)
+<img align="center" src="./display-image.png"/>
 
 ## 🛠 Installation
 
